@@ -6,7 +6,7 @@ import kotlinx.coroutines.withContext
 abstract class BaseUseCase<in P, out R>(
     private val dispatcher: CoroutineDispatcher
 ) {
-    protected abstract suspend fun execute(parameter: P): R
+    protected abstract suspend fun execute(params: P): R
 
     suspend operator fun invoke(params: P): Result<R> {
         return try {

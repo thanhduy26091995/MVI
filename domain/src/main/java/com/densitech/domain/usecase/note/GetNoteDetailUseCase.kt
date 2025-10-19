@@ -5,11 +5,10 @@ import com.densitech.domain.repository.INoteRepository
 import com.densitech.domain.usecase.base.FlowUseCase
 import kotlinx.coroutines.flow.Flow
 
-class GetAllNotesUseCase(
+class GetNoteDetailUseCase constructor(
     private val noteRepository: INoteRepository
-) : FlowUseCase<Unit, List<Note>>() {
-
-    override fun execute(params: Unit): Flow<List<Note>> {
-        return noteRepository.getAllNotes()
+) : FlowUseCase<String, Note?>() {
+    override fun execute(params: String): Flow<Note?> {
+       return noteRepository.getNoteById(params)
     }
 }
